@@ -4,9 +4,12 @@ class WelcomeController < ApplicationController
 
     require 'rest-client'
 
-    asdf = RestClient.get 'http://hackathon.siim.org/fhir/Patient/siimjoe', { apiKey: '0619a72e-bbf4-4f85-a2b4-c6c2fd2d9cb7' }
 
-    @asdf = JSON.parse asdf
+    patientData = get_patient_data("siimjoe")
+    @resourceType = patientData["resourceType"]
+    @id = patientData["id"]
+    @patient = patientData["re"]
 
+    @patientData = patientData
   end
 end
