@@ -4,12 +4,10 @@ class WelcomeController < ApplicationController
 
     require 'rest-client'
 
+    patientName = "siimjoe"
+    @patientList = get_all_patients
+    @patientData = get_patient_data(patientName)
+    @patientDiagnosticReportList = get_patient_diagnostic_reports(patientName)
 
-    patientData = get_patient_data("siimjoe")
-    @resourceType = patientData["resourceType"]
-    @id = patientData["id"]
-    @patient = patientData["re"]
-
-    @patientData = patientData
   end
 end

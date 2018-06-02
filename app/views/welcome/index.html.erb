@@ -1,4 +1,44 @@
-<h1>Incidental Findings</h1>
+
+<h1>Unassigned: Follow-up Non-Critical (FUNC)</h1>
+<p>List of requested follow up for actionable items</p>
 <hr/>
-<%= @patientData["text"]["div"].html_safe %><br /><br />
-<%= @patientData %>
+<div class="container">
+  <div class="row">
+    <div class="col-4 list_container">
+      <div></div>
+      <% firstLoop = true %>
+<% @patientList["entry"].each do | asdf |  %>
+          <% if firstLoop %>
+              <div id="item_direction" class="form-group background_teal">
+              <% firstLoop = false %>
+          <% else %>
+              <div id="item_direction">
+          <% end %>
+
+      <%= asdf["resource"]["text"]["div"].html_safe %>
+      </div>
+          <hr />
+<% end %>
+    </div>
+    <div  class="col-8">
+
+      <div class="background_teal" id="item_direction" ><%= @patientData["text"]["div"].html_safe %></div>
+      <hr />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class=" nav-link btn btn-primary btn-lg active" href="#"><i class="fa d-inline fa-lg fa-thumbs-o-up"></i> Accept</a>
+        </li>&nbsp;&nbsp;
+        <li class="nav-item">
+
+          <a class="nav-link btn btn-default btn-lg active" href="#"><i class="fa d-inline fa-lg fa-thumbs-o-down"></i> Reject</a>
+        </li>
+      </ul>
+      <hr/>
+      <h2>Diagnostic Reports</h2>
+      <% @patientDiagnosticReportList["entry"].each do | asdf |  %>
+          <div id="item_direction"><%= asdf["resource"]["text"]["div"].html_safe %></div><hr />
+      <% end %>
+
+    </div>
+  </div>
+</div>
